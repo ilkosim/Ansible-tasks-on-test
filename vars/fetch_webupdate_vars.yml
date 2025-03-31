@@ -1,0 +1,6 @@
+parent_src_dir: "/home/ifao/cytric"
+parent_dest_dir: "/opt/tasks_on_test/files"
+src_paths:
+  - "{{parent_src_dir}}/web_update_procedure.sh"
+dest_paths: |-
+  {{parent_dest_dir}}

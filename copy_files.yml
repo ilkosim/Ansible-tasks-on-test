@@ -1,0 +1,16 @@
+- name: Copy multiple files base on defined task as boolean variable in ./vars
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'  
+  tasks:
+    - include_vars: ./vars/copy_ibe_vars.yml
+    - include_vars: ./vars/copy_webupdate_vars.yml
+    - include_vars: ./vars/copy_pdf_vars.yml
+    - include_vars: ./vars/copy_digicert_certificates_vars.yml
+    - name: include copy multiple files role
+      include_role:
+        name: copy_multiple_files
+      when: ibe == "true" or webupdate == "true" or pdf == "true" or certs == "true"

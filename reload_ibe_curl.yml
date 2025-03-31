@@ -1,0 +1,17 @@
+- name:  Reload ibe.properties
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'
+  tasks:
+     - shell: "curl -k https://{{inventory_hostname}}.{{url_domain}}:{{url_port}}/{{resource_path_reload}} {{curl_url_cred}}"
+       args:
+         executable: "{{shell_type}}"
+       register: output
+
+     - debug:
+         msg: "{{ output.stdout_lines }}"
+  
+

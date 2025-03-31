@@ -1,0 +1,25 @@
+- name: Reload ibe.properties
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'
+  tasks:
+    - include_vars: ./vars/monitor_reload_ibe_vars.yml
+    - uri:
+        url: "https://{{virt_hostname}}.{{url_domain}}:{{url_port}}/{{ resource_path_reload }}"
+        method: "{{method}}"
+        body_format: "{{body_format}}"
+        body:
+          username: "{{username}}"
+          passwd: "{{password}}"
+          Login: "{{login}}"
+        #status_code: "{{status_code}}"
+        #force_basic_auth: "{{force_basic_auth}}"
+        validate_certs: "{{validate_certs}}"
+        return_content: "{{return_content}}"
+      register: login
+    
+    - debug:
+        msg: "{{ login.content.split('\n') }}"

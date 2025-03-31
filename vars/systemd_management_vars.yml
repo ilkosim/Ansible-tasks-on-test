@@ -1,0 +1,5 @@
+service_name:
+  - "httpd24-httpd"
+service_action: |-
+  restarted
+ignore_errors_boolean: "false"

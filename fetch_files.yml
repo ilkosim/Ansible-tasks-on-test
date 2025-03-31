@@ -1,0 +1,18 @@
+- name: Fetch multiple files base on defined task as boolean variable in ./vars
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'  
+  tasks:
+    - include_vars: ./vars/enable_disable_fetch_ibe.yml
+    - include_vars: ./vars/enable_disable_fetch_webupdate.yml
+    - include_vars: ./vars/fetch_ibe_vars.yml
+      when: ibe == "true"
+    - include_vars: ./vars/fetch_webupdate_vars.yml
+      when: webupdate == "true"
+    - name: include fetch multiple files role
+      include_role:
+        name: fetch_multiple_files
+      when: ibe == "true" or webupdate == "true"

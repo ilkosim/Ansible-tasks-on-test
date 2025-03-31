@@ -1,0 +1,4 @@
+shell_type: "/bin/bash"
+java_ps_number_cmd: "ps ax|grep java | grep -v grep | wc -l"
+java_home: "/home/oracle/jdk"
+java_exe_path: "/home/oracle/jdk/bin"

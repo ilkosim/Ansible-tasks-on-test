@@ -1,0 +1,29 @@
+- name:  Webupdate execution
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "cytric"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'
+  tasks:
+     - include_vars: webupdate_execution_vars.yml
+     - shell: "{{apply_env_cmd}}"
+       args:
+         chdir: "{{cytric_dir}}"
+         executable: "{{shell_type}}"
+       register: env
+
+     - debug:
+         msg: "{{ env.stdout.split('\n') }}"
+
+     - shell: "{{apply_webupdate_cmd}}"
+       args:
+         chdir: "{{cytric_dir}}"
+         executable: "{{shell_type}}"
+       environment:
+         CLASSPATH: "{{env.stdout.split('\n')}}"
+       register: webupdate
+
+     - debug:
+         msg: "{{ webupdate.stdout.split('\n') }}"
+

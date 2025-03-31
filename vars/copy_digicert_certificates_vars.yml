@@ -1,0 +1,25 @@
+certs: "false"
+parent_src_dir: "/etc/letsencrypt/archive"
+server_src: "rtm.ifao.net"
+parent_dest_dir: "/opt/rh/httpd24/root/etc/httpd/ssl"
+server_dest: "rtm"
+src_paths:
+  - "{{parent_src_dir}}/{{server_src}}/cert1.pem"
+  - "{{parent_src_dir}}/{{server_src}}/privkey1.pem"
+  - "{{parent_src_dir}}/{{server_src}}/chain1.pem"
+dest_paths: |-
+  {{parent_dest_dir}}/{{server_dest}}/server.crt
+  {{parent_dest_dir}}/{{server_dest}}/server.key
+  {{parent_dest_dir}}/{{server_dest}}/intermediate.pem
+owner_name: |-
+  root
+  root
+  root
+group_name: |-
+  root
+  root
+  root
+mode_state: |-
+  600
+  600
+  600

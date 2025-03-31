@@ -1,0 +1,20 @@
+- name: Manage systemd Services
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'
+  tasks:
+    - include_vars: ./vars/systemd_management_vars.yml
+    - name: Systemd task
+      systemd:
+        name: "{{ item.0 }}"
+        state: "{{ item.1 }}"
+      loop: "{{ service_name|zip(service_action)|list }}"
+      ignore_errors: "{{ ignore_errors_boolean }}"
+      register: output
+
+    - debug:
+        msg: "{{ output.stdout.split('\n') }}"
+

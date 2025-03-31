@@ -1,0 +1,6 @@
+shell_type: "/bin/bash"
+cytric_dir: "/home/ifao/cytric"
+apply_env_cmd: ". set_classpath"
+apply_webupdate_cmd: "./web_update_procedure.sh"
+java_home: "/home/oracle/jdk"
+java_exe_path: "/home/oracle/jdk/bin"

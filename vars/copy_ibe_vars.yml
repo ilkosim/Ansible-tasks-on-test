@@ -1,0 +1,14 @@
+ibe: "false"
+parent_src_dir: "/opt/tasks_on_test/files/{{inventory_hostname}}/home/ifao/cytric
+parent_dest_dir: "/home/ifao/cytric"
+src_paths:
+  - "{{parent_src_dir}}/ibe.properties"
+dest_paths: |-
+  {{parent_dest_dir}}
+owner_name: |-
+  cytric
+group_name: |-
+  cytric
+mode_state: |-
+  600
+

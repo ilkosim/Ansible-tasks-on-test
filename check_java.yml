@@ -1,0 +1,21 @@
+- name:  Check java
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: "root"
+  become_method: "su"
+  become_exe: 'sudo -p "Password: " su -'
+  tasks:
+     - include_vars: check_java_vars.yml
+     - shell: "{{java_ps_number_cmd}}"
+       args:
+         executable: "{{shell_type}}"
+       environment:
+         JAVA_HOME: "{{java_home}}"
+         PATH: "{{ ansible_env.PATH }}:{{java_exe_path}}"
+       register: version
+
+     - debug:
+         msg: "{{ version.stdout.split('\n') }}"
+  
+

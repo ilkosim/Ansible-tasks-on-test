@@ -1,0 +1,4 @@
+shell_type: "/bin/bash"
+haproxy_enable_disable_cmd: "/usr/local/bin/hahost"
+enable_disable_webserver: "-e"
+web_server: "dmzweb1"
