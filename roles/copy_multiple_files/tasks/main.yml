@@ -1,0 +1,10 @@
+- name: copy multiple files with options
+  copy:
+    src: "{{ item.0 }}"
+    dest: "{{ item.1 }}"
+    owner: "{{ item.2 }}"
+    group: "{{ item.3 }}"
+    mode: "{{ item.4 }}"
+    force: "{{ dest_replacing_create_boolean }}"
+    backup: "{{ backup_original_boolean }}"
+  loop: "{{ src_paths|zip(dest_paths.split('\n'),owner_name.split('\n'),group_name.split('\n'),mode_state.split('\n'))|list }}"

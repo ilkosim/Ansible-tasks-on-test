@@ -1,0 +1,8 @@
+dest_replacing_create_boolean: "yes"
+backup_original_boolean: "true"
+url_domain: "sofia.ifao.net"
+url_port: "443"
+resource_path_reload: "monitor?reloadIbe=true"
+resource_path_monitor: "monitor?f=prop"
+curl_url_cred: "-d \"username=monitor&passwd=monitor\" -s"
+curl_pipe_cmd: "grep newcib.disabled"

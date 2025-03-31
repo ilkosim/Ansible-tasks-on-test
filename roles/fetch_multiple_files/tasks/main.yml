@@ -1,0 +1,5 @@
+- name: fetch multiple files or directories
+  fetch:
+    src: "{{ item.0 }}"
+    dest: "{{ item.1 }}"
+  loop: "{{ src_paths|zip(dest_paths.split('\n'))|list }}"
