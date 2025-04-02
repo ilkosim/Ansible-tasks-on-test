@@ -157,7 +157,7 @@ environment="abc46791-5401-4fb8-b4e3-0744d06513b8"
 # API v2: 'Read metric', 'Read entities', 'Read problems', 'Write problems'
 # API v1: 'Access problems and event feed, metric, and topology', 'Read configuration', 'Write configuration', 
 #         'Change data privacy settings', 'User sessions'
-token="dt0c01.7ZQ5RKHKPYHTN7FEMBLWOUGJ.5TQNZ74QJF2MYIU2245V23RBAI7KUHOPL72CHVHG2ESNUKXIWOMTHKRUHFCOEE2B"
+token="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # generate a randon name for DynaTrace Maintenance Window work dir
 work_dir=/tmp/dtmw_$RANDOM
